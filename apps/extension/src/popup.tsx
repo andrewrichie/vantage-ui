@@ -1,46 +1,41 @@
-import React, { StrictMode, useState } from "react"
+import '@vantage-ui/ui/src/globals.css';
 
-export default function Popup() {
-  const [activeTab, setActiveTab] = useState<string | null>(null)
+import { AuthenticatedView } from './components/authenticated-view';
+import { DevAuthToggle } from './components/dev-auth-toggle';
+import { PopupHeader } from './components/popup-header';
+import { UnauthenticatedView } from './components/unauthenticated-view';
+import { usePopupStore } from './store/popup-store';
 
-  const handleGetTab = async () => {
-    try {
-      const tabs = await chrome.tabs.query({
-        active: true,
-        currentWindow: true
-      })
-      if (tabs.length > 0) {
-        setActiveTab(tabs[0].title || "Unknown Tab")
-      }
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error("Error fetching tab:", error)
-    }
-  }
+function PopupContent() {
+  const authState = usePopupStore((s) => s.authState);
 
   return (
-    <StrictMode>
-      <div
-        style={{
-          width: "320px",
-          height: "480px",
-          backgroundColor: "#FFFFFF",
-          padding: "16px",
-          boxSizing: "border-box"
-        }}>
-        <h2>VantageUI Popup</h2>
-        <button
-          type="button"
-          onClick={handleGetTab}
-          style={{ marginTop: "16px", padding: "8px" }}>
-          Get Active Tab
-        </button>
-        {activeTab && (
-          <p style={{ marginTop: "16px", fontSize: "14px" }}>
-            Active Tab: {activeTab}
-          </p>
-        )}
-      </div>
-    </StrictMode>
-  )
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        width: '320px',
+        minHeight: '480px',
+        background: '#F5F5F6',
+        fontFamily: 'DM Sans, sans-serif',
+        overflow: 'hidden',
+      }}
+    >
+      <PopupHeader />
+      {authState === 'authenticated' ? (
+        <AuthenticatedView />
+      ) : (
+        <UnauthenticatedView />
+      )}
+      <DevAuthToggle />
+    </div>
+  );
+}
+
+export default function Popup() {
+  return (
+    <div style={{ width: '320px', minHeight: '480px' }}>
+      <PopupContent />
+    </div>
+  );
 }
