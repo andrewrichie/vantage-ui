@@ -1,7 +1,14 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "dist"
+    "outDir": "dist",
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "ES2020",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
   },
   "include": ["**/*.ts", "**/*.tsx"]
 }
