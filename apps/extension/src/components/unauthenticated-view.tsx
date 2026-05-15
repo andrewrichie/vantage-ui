@@ -1,4 +1,32 @@
+import { usePopupStore } from '../store/popup-store';
+
 function UnauthenticatedView() {
+  const setAuthState = usePopupStore((s) => s.setAuthState);
+  const setUserEmail = usePopupStore((s) => s.setUserEmail);
+  const setCreditBalance = usePopupStore((s) => s.setCreditBalance);
+
+  const handleSignIn = () => {
+    setAuthState('authenticated');
+    setUserEmail('user@example.com');
+    setCreditBalance(10);
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs[0]?.windowId) {
+        chrome.sidePanel.open({ windowId: tabs[0].windowId });
+      }
+    });
+  };
+
+  const handleCreateAccount = () => {
+    setAuthState('authenticated');
+    setUserEmail('user@example.com');
+    setCreditBalance(5);
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      if (tabs[0]?.windowId) {
+        chrome.sidePanel.open({ windowId: tabs[0].windowId });
+      }
+    });
+  };
+
   return (
     <div
       style={{
@@ -58,6 +86,7 @@ function UnauthenticatedView() {
       >
         <button
           type="button"
+          onClick={handleSignIn}
           style={{
             width: '100%',
             padding: '12px 16px',
@@ -77,6 +106,7 @@ function UnauthenticatedView() {
 
         <button
           type="button"
+          onClick={handleCreateAccount}
           style={{
             width: '100%',
             padding: '12px 16px',

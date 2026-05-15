@@ -1,5 +1,7 @@
 import '@vantage-ui/ui/src/globals.css';
 
+import { useEffect, useState } from 'react';
+
 import { AuthenticatedView } from './components/authenticated-view';
 import { DevAuthToggle } from './components/dev-auth-toggle';
 import { PopupHeader } from './components/popup-header';
@@ -8,7 +10,13 @@ import { usePopupStore } from './store/popup-store';
 import { StoreProvider } from './store/store-provider';
 
 function PopupContent() {
+  const [hydrated, setHydrated] = useState(usePopupStore.persist.hasHydrated());
   const authState = usePopupStore((s) => s.authState);
+
+  useEffect(() => {
+    const unsub = usePopupStore.persist.onFinishHydration(() => setHydrated(true));
+    return () => unsub();
+  }, []);
 
   return (
     <div
@@ -23,11 +31,8 @@ function PopupContent() {
       }}
     >
       <PopupHeader />
-      {authState === 'authenticated' ? (
-        <AuthenticatedView />
-      ) : (
-        <UnauthenticatedView />
-      )}
+      {hydrated && authState === 'authenticated' && <AuthenticatedView />}
+      {hydrated && authState !== 'authenticated' && <UnauthenticatedView />}
       <DevAuthToggle />
     </div>
   );

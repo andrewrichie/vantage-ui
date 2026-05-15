@@ -2,7 +2,7 @@ import {
   Clock, Palette, Settings, Sparkles, Zap,
 } from 'lucide-react';
 
-import type { TabId } from '../store/ui-slice';
+import type { TabId } from '../../store/ui-slice';
 
 /** Navigation item definition for the side panel tab bar. */
 interface NavItem {

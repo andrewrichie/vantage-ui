@@ -27,5 +27,8 @@ module.exports = {
       },
     ],
     'jsx-a11y/heading-has-content': 'off',
+    'jsx-a11y/label-has-associated-control': ['error', {
+      controlComponents: ['Input'],
+    }],
   },
 };

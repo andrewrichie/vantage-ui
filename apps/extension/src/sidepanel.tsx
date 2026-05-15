@@ -1,6 +1,7 @@
 import '@vantage-ui/ui/src/globals.css';
 
 import { Toaster } from '@vantage-ui/ui';
+import { useEffect, useState } from 'react';
 
 import { AuthGate } from './components/panel/auth-gate';
 import { PanelContent } from './components/panel/panel-content';
@@ -35,9 +36,16 @@ function SidePanelShell() {
 /**
  * SidePanelInner reads auth state and conditionally renders either the
  * full authenticated shell or the unauthenticated AuthGate.
+ * Waits for persist hydration to avoid flashing the wrong content.
  */
 function SidePanelInner() {
+  const [hydrated, setHydrated] = useState(usePopupStore.persist.hasHydrated());
   const authState = usePopupStore((s) => s.authState);
+
+  useEffect(() => {
+    const unsub = usePopupStore.persist.onFinishHydration(() => setHydrated(true));
+    return () => unsub();
+  }, []);
 
   return (
     <div
@@ -50,7 +58,8 @@ function SidePanelInner() {
         fontFamily: 'DM Sans, sans-serif',
       }}
     >
-      {authState === 'authenticated' ? <SidePanelShell /> : <AuthGate />}
+      {hydrated && authState === 'authenticated' && <SidePanelShell />}
+      {hydrated && authState !== 'authenticated' && <AuthGate />}
       {/* Global toast notifications */}
       <Toaster />
     </div>
