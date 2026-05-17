@@ -1,7 +1,7 @@
 # VantageUI — Progress History
 
 > Auto-generated progress tracker. **Every task MUST update this file** upon completion.
-> Last updated: 2026-05-17 (Phase 11 completed)
+> Last updated: 2026-05-17 (Phase 12 completed)
 
 ---
 
@@ -20,13 +20,13 @@
 | 9     | Sandpack Sandbox Integration     | ✅ Complete    |
 | 10    | Prompt Generator UI              | ✅ Complete    |
 | 11    | Design System Viewer             | ✅ Complete    |
-| 12    | Extraction History               | ❌ Not Started |
+| 12    | Extraction History               | ✅ Complete    |
 | 13    | Credits & Billing UI             | ❌ Not Started |
 | 14    | Onboarding Tooltip Sequence      | ❌ Not Started |
 | 15    | Landing Page (Next.js)           | ❌ Not Started |
 
-- **Completed:** 11 / 15 phases
-- **Remaining:** 5 phases (12–15)
+- **Completed:** 12 / 15 phases
+- **Remaining:** 4 phases (13–15)
 
 ---
 
@@ -193,18 +193,18 @@
 
 ---
 
-## Phase 12 — Extraction History ❌
+## Phase 12 — Extraction History ✅
 
-| #   | Task                              | Status | Notes                                   |
-| --- | --------------------------------- | ------ | --------------------------------------- |
-| 1   | Create mock history fixtures      | ❌     | `src/mocks/history.mock.ts` not created |
-| 2   | Create Zustand history slice      | ❌     | `historySlice` not created              |
-| 3   | Build `HistoryEmpty` component    | ❌     | Not created                             |
-| 4   | Build `HistoryItem` component     | ❌     | Not created                             |
-| 5   | Install `date-fns` for timestamps | ❌     | Not installed                           |
-| 6   | Build delete confirmation popover | ❌     | Not created                             |
-| 7   | Build re-open extraction action   | ❌     | Not created                             |
-| 8   | Assemble `HistoryTab` with wiring | ❌     | Placeholder still in `history-tab.tsx`  |
+| #   | Task                              | Status | Notes                                                                      |
+| --- | --------------------------------- | ------ | -------------------------------------------------------------------------- |
+| 1   | Create mock history fixtures      | ✅     | `src/mocks/history.mock.ts` — 5 items from linear.app, stripe.com, etc.    |
+| 2   | Create Zustand history slice      | ✅     | `historySlice` with addItem (prepend), removeItem (immutable), clearAll    |
+| 3   | Build `HistoryEmpty` component    | ✅     | Dashed border square + Clock + "Activate Inspector" sends TOGGLE_INSPECTOR |
+| 4   | Build `HistoryItem` component     | ✅     | Thumbnail + domain + tag + relative timestamp + Sparkles/Trash2 actions    |
+| 5   | Install `date-fns` for timestamps | ✅     | `formatDistanceToNow` for relative timestamps ("2 hours ago")              |
+| 6   | Build delete confirmation popover | ✅     | Shadcn `<Popover>` with Cancel/Delete + toast                              |
+| 7   | Build re-open extraction action   | ✅     | Sparkles → `setSuccess()` + `setActiveTab('extract')`                      |
+| 8   | Assemble `HistoryTab` with wiring | ✅     | Full list → delete → clear all → empty state flow                          |
 
 ---
 
