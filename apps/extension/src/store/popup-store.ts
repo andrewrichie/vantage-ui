@@ -9,6 +9,7 @@ interface PopupStore {
   userEmail: string | null
   user: { email: string } | null
   error: string | null
+  inspectorActive: boolean
   setAuthState: (state: AuthState) => void
   setCreditBalance: (balance: number) => void
   setUserEmail: (email: string | null) => void
@@ -16,6 +17,8 @@ interface PopupStore {
   mockLogin: (email: string) => Promise<void>
   mockSignup: (email: string) => Promise<void>
   mockLogout: () => void
+  toggleInspector: () => void
+  setInspectorActive: (active: boolean) => void
 }
 
 const chromeStorage = {
@@ -45,6 +48,7 @@ export const usePopupStore = create<PopupStore>()(
       userEmail: null,
       user: null,
       error: null,
+      inspectorActive: false,
 
       setAuthState: (authState) => set({ authState }),
       setCreditBalance: (creditBalance) => set({ creditBalance }),
@@ -99,7 +103,14 @@ export const usePopupStore = create<PopupStore>()(
         user: null,
         userEmail: null,
         error: null,
+        inspectorActive: false,
       }),
+
+      toggleInspector: () => set((state) => ({
+        inspectorActive: !state.inspectorActive,
+      })),
+
+      setInspectorActive: (active) => set({ inspectorActive: active }),
     }),
     {
       name: 'vantageui-auth',
