@@ -1,7 +1,7 @@
 # VantageUI — Progress History
 
 > Auto-generated progress tracker. **Every task MUST update this file** upon completion.
-> Last updated: 2026-05-17 (Phase 12 completed)
+> Last updated: 2026-05-17 (Phase 12 completed, cross-context auth sync fix)
 
 ---
 

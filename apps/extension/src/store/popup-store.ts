@@ -1,16 +1,21 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type AuthState = 'authenticated' | 'unauthenticated';
+export type AuthState = 'unauthenticated' | 'loading' | 'authenticated';
 
 interface PopupStore {
   authState: AuthState
   creditBalance: number
   userEmail: string | null
+  user: { email: string } | null
+  error: string | null
   setAuthState: (state: AuthState) => void
   setCreditBalance: (balance: number) => void
   setUserEmail: (email: string | null) => void
   toggleAuth: () => void
+  mockLogin: (email: string) => Promise<void>
+  mockSignup: (email: string) => Promise<void>
+  mockLogout: () => void
 }
 
 const chromeStorage = {
@@ -38,9 +43,13 @@ export const usePopupStore = create<PopupStore>()(
       authState: 'unauthenticated',
       creditBalance: 10,
       userEmail: null,
+      user: null,
+      error: null,
+
       setAuthState: (authState) => set({ authState }),
       setCreditBalance: (creditBalance) => set({ creditBalance }),
       setUserEmail: (userEmail) => set({ userEmail }),
+
       toggleAuth: () => set((state) => ({
         authState:
             state.authState === 'authenticated'
@@ -48,8 +57,49 @@ export const usePopupStore = create<PopupStore>()(
               : 'authenticated',
         userEmail:
             state.authState === 'unauthenticated' ? 'user@example.com' : null,
+        user:
+            state.authState === 'unauthenticated'
+              ? { email: 'user@example.com' }
+              : null,
         creditBalance: state.authState === 'unauthenticated' ? 10 : 10,
+        error: null,
       })),
+
+      mockLogin: async (email: string) => {
+        set({ authState: 'loading', error: null });
+
+        await new Promise<void>((resolve) => {
+          setTimeout(() => resolve(), 1500);
+        });
+
+        set({
+          authState: 'authenticated',
+          user: { email },
+          userEmail: email,
+        });
+      },
+
+      mockSignup: async (email: string) => {
+        set({ authState: 'loading', error: null });
+
+        await new Promise<void>((resolve) => {
+          setTimeout(() => resolve(), 1500);
+        });
+
+        set({
+          authState: 'authenticated',
+          user: { email },
+          userEmail: email,
+          creditBalance: 5,
+        });
+      },
+
+      mockLogout: () => set({
+        authState: 'unauthenticated',
+        user: null,
+        userEmail: null,
+        error: null,
+      }),
     }),
     {
       name: 'vantageui-auth',

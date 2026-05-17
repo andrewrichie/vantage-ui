@@ -6,7 +6,7 @@ import { LowCreditWarning } from './low-credit-warning';
 function AuthenticatedView() {
   const creditBalance = usePopupStore((s) => s.creditBalance);
   const userEmail = usePopupStore((s) => s.userEmail);
-  const toggleAuth = usePopupStore((s) => s.toggleAuth);
+  const mockLogout = usePopupStore((s) => s.mockLogout);
 
   const handleActivateInspector = async () => {
     try {
@@ -155,7 +155,7 @@ function AuthenticatedView() {
 
       <button
         type="button"
-        onClick={toggleAuth}
+        onClick={mockLogout}
         style={{
           alignSelf: 'flex-end',
           background: 'none',
