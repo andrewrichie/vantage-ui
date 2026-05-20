@@ -1,7 +1,7 @@
 # VantageUI — Progress History
 
 > Auto-generated progress tracker. **Every task MUST update this file** upon completion.
-> Last updated: 2026-05-17 (Phase 12 completed, cross-context auth sync fix)
+> Last updated: 2026-05-20 (Phase 14 completed, onboarding tooltip sequence)
 
 ---
 
@@ -21,12 +21,12 @@
 | 10    | Prompt Generator UI              | ✅ Complete    |
 | 11    | Design System Viewer             | ✅ Complete    |
 | 12    | Extraction History               | ✅ Complete    |
-| 13    | Credits & Billing UI             | ❌ Not Started |
-| 14    | Onboarding Tooltip Sequence      | ❌ Not Started |
+| 13    | Credits & Billing UI             | ✅ Complete    |
+| 14    | Onboarding Tooltip Sequence      | ✅ Complete    |
 | 15    | Landing Page (Next.js)           | ❌ Not Started |
 
-- **Completed:** 12 / 15 phases
-- **Remaining:** 4 phases (13–15)
+- **Completed:** 14 / 15 phases
+- **Remaining:** 1 phase (15)
 
 ---
 
@@ -208,31 +208,31 @@
 
 ---
 
-## Phase 13 — Credits & Billing UI ❌
+## Phase 13 — Credits & Billing UI ✅
 
-| #   | Task                                    | Status | Notes                                   |
-| --- | --------------------------------------- | ------ | --------------------------------------- |
-| 1   | Create mock credits fixtures            | ❌     | `src/mocks/credits.mock.ts` not created |
-| 2   | Create / finalize Zustand credits slice | ❌     | No `creditsSlice` in store              |
-| 3   | Build `CreditBalanceCard` component     | ❌     | Not created                             |
-| 4   | Build low-credit warning banner         | ❌     | Not created                             |
-| 5   | Build `CreditPackSelector` component    | ❌     | Not created                             |
-| 6   | Build mocked Stripe purchase flow       | ❌     | Not created                             |
-| 7   | Build `TransactionHistoryTable`         | ❌     | Not created                             |
-| 8   | Assemble `CreditsTab` with wiring       | ❌     | Placeholder still in `credits-tab.tsx`  |
+| #   | Task                                    | Status | Notes                                               |
+| --- | --------------------------------------- | ------ | --------------------------------------------------- |
+| 1   | Create mock credits fixtures            | ✅     | `src/mocks/credits.mock.ts` — transactions + types  |
+| 2   | Create / finalize Zustand credits slice | ✅     | `store/creditsSlice.ts` — persist to chrome.storage |
+| 3   | Build `CreditBalanceCard` component     | ✅     | Count-up animation + progress bar                   |
+| 4   | Build low-credit warning banner         | ✅     | `low-credit-warning.tsx` — full + compact variants  |
+| 5   | Build `CreditPackSelector` component    | ✅     | 3 pack cards with mocked Stripe flow + toast        |
+| 6   | Build mocked Stripe purchase flow       | ✅     | Built into `CreditPackSelector` — 2s delay + toast  |
+| 7   | Build `TransactionHistoryTable`         | ✅     | Date/Type/Description/Amount — colored badges       |
+| 8   | Assemble `CreditsTab` with wiring       | ✅     | Warning → Balance → Packs → History assembled       |
 
 ---
 
-## Phase 14 — Onboarding Tooltip Sequence ❌
+## Phase 14 — Onboarding Tooltip Sequence ✅
 
-| #   | Task                                 | Status | Notes                              |
-| --- | ------------------------------------ | ------ | ---------------------------------- |
-| 1   | Create onboarding state + storage    | ❌     | `onboardingSlice` not created      |
-| 2   | Define onboarding step configuration | ❌     | `onboarding.config.ts` not created |
-| 3   | Build `OnboardingBackdrop` component | ❌     | Not created                        |
-| 4   | Build `OnboardingTooltip` component  | ❌     | Not created                        |
-| 5   | Implement smart tooltip positioning  | ❌     | Not created                        |
-| 6   | Build `OnboardingOverlay` + mount    | ❌     | Not created                        |
+| #   | Task                                 | Status | Notes                                                  |
+| --- | ------------------------------------ | ------ | ------------------------------------------------------ |
+| 1   | Create onboarding state + storage    | ✅     | `store/onboardingSlice.ts` — persist to chrome.storage |
+| 2   | Define onboarding step configuration | ✅     | `config/onboarding.config.ts` — 5 typed steps          |
+| 3   | Build `OnboardingBackdrop` component | ✅     | Spotlight cutout via CSS clip-path + pulse ring        |
+| 4   | Build `OnboardingTooltip` component  | ✅     | Card with step counter, progress dots, Skip/Next       |
+| 5   | Implement smart tooltip positioning  | ✅     | `useTooltipPosition` hook — flip on overflow           |
+| 6   | Build `OnboardingOverlay` + mount    | ✅     | Mounted in sidepanel, reset button in Settings         |
 
 ---
 
