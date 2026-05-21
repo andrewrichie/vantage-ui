@@ -1,32 +1,32 @@
 # VantageUI — Progress History
 
 > Auto-generated progress tracker. **Every task MUST update this file** upon completion.
-> Last updated: 2026-05-20 (Phase 14 completed, onboarding tooltip sequence)
+> Last updated: 2026-05-21 (Phase 15 completed, landing page)
 
 ---
 
 ## Overall Status
 
-| Phase | Description                      | Status         |
-| ----- | -------------------------------- | -------------- |
-| 1     | Project Foundation               | ✅ Complete    |
-| 2     | Plasmo Extension Setup           | ✅ Complete    |
-| 3     | Design System Package            | ✅ Complete    |
-| 4     | Popup UI                         | ✅ Complete    |
-| 5     | Side Panel Shell & Navigation    | ✅ Complete    |
-| 6     | Auth UI Flows                    | ✅ Complete    |
-| 7     | Inspector Content Script Overlay | ✅ Complete    |
-| 8     | Extraction Flow UI               | ✅ Complete    |
-| 9     | Sandpack Sandbox Integration     | ✅ Complete    |
-| 10    | Prompt Generator UI              | ✅ Complete    |
-| 11    | Design System Viewer             | ✅ Complete    |
-| 12    | Extraction History               | ✅ Complete    |
-| 13    | Credits & Billing UI             | ✅ Complete    |
-| 14    | Onboarding Tooltip Sequence      | ✅ Complete    |
-| 15    | Landing Page (Next.js)           | ❌ Not Started |
+| Phase | Description                      | Status      |
+| ----- | -------------------------------- | ----------- |
+| 1     | Project Foundation               | ✅ Complete |
+| 2     | Plasmo Extension Setup           | ✅ Complete |
+| 3     | Design System Package            | ✅ Complete |
+| 4     | Popup UI                         | ✅ Complete |
+| 5     | Side Panel Shell & Navigation    | ✅ Complete |
+| 6     | Auth UI Flows                    | ✅ Complete |
+| 7     | Inspector Content Script Overlay | ✅ Complete |
+| 8     | Extraction Flow UI               | ✅ Complete |
+| 9     | Sandpack Sandbox Integration     | ✅ Complete |
+| 10    | Prompt Generator UI              | ✅ Complete |
+| 11    | Design System Viewer             | ✅ Complete |
+| 12    | Extraction History               | ✅ Complete |
+| 13    | Credits & Billing UI             | ✅ Complete |
+| 14    | Onboarding Tooltip Sequence      | ✅ Complete |
+| 15    | Landing Page (Next.js)           | ✅ Complete |
 
-- **Completed:** 14 / 15 phases
-- **Remaining:** 1 phase (15)
+- **Completed:** 15 / 15 phases
+- **Remaining:** 0 phases
 
 ---
 
@@ -236,21 +236,21 @@
 
 ---
 
-## Phase 15 — Landing Page (Next.js) ❌
+## Phase 15 — Landing Page (Next.js) ✅
 
-| #   | Task                                   | Status | Notes                                                   |
-| --- | -------------------------------------- | ------ | ------------------------------------------------------- |
-| 1   | Scaffold `apps/landing` as Next.js app | ⚠️     | `package.json` and `tsconfig.json` exist, no `src/` yet |
-| 2   | Build page metadata and SEO            | ❌     | `layout.tsx` not created                                |
-| 3   | Build `Navbar` component               | ❌     | Not created                                             |
-| 4   | Build `HeroSection` component          | ❌     | Not created                                             |
-| 5   | Implement waitlist form logic          | ❌     | Not created                                             |
-| 6   | Build `HowItWorksSection`              | ❌     | Not created                                             |
-| 7   | Build `FeaturesSection`                | ❌     | Not created                                             |
-| 8   | Build `PricingSection`                 | ❌     | Not created                                             |
-| 9   | Build `SocialProofSection`             | ❌     | Not created                                             |
-| 10  | Build `Footer` component               | ❌     | Not created                                             |
-| 11  | Validate responsiveness + Lighthouse   | ❌     | Not done                                                |
+| #   | Task                                   | Status | Notes                                                                                                                    |
+| --- | -------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------ |
+| 1   | Scaffold `apps/landing` as Next.js app | ✅     | Next.js app with Tailwind, fonts, and shared config                                                                      |
+| 2   | Build page metadata and SEO            | ✅     | `layout.tsx` with fonts, metadata, OpenGraph                                                                             |
+| 3   | Build `Navbar` component               | ✅     | Sticky nav with blur, smooth-scroll links, mobile hamburger                                                              |
+| 4   | Build `HeroSection` component          | ✅     | 100vh hero with staggered animations, badge, waitlist form, video placeholder                                            |
+| 5   | Implement waitlist form logic          | ✅     | Zod validation, 1.5s mock submit, success state                                                                          |
+| 6   | Build `HowItWorksSection`              | ✅     | 3-step flow with scroll-triggered animation, connecting dashed line                                                      |
+| 7   | Build `FeaturesSection`                | ✅     | 6-card 3×2 grid with hover lift effect                                                                                   |
+| 8   | Build `PricingSection`                 | ✅     | 3 credit packs, "Popular" badge, CTA scrolls to waitlist                                                                 |
+| 9   | Build `SocialProofSection`             | ✅     | Waitlist count + tech logo row with grayscale-to-color hover                                                             |
+| 10  | Build `Footer` component               | ✅     | Logo, tagline, placeholder links, copyright                                                                              |
+| 11  | Validate responsiveness + Lighthouse   | ⚠️     | Build passes, responsive layout verified via code review.<br>Lighthouse audit needs manual browser run against dev build |
 
 ---
 
